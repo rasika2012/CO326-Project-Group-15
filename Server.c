@@ -13,11 +13,11 @@ void set_state(char command){
       printf("Set State\n");
 }
 
-char get_state(){
-      char * command = "<command>"
+char* get_state(){
+      char * command = "<command>";
       //create function to turn on and off pararl port output acourding to command
       printf("Get State\n");
-      return command
+      return command;
 }
 
 
@@ -37,7 +37,7 @@ int main( int argc, char *argv[] ) {
    
    /* Init Socket*/
    bzero((char *) &serv_addr, sizeof(serv_addr));
-   portno = 5002;
+   portno = 5003;
    
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_addr.s_addr = INADDR_ANY;
@@ -48,7 +48,7 @@ int main( int argc, char *argv[] ) {
       perror("ERROR on binding");
       exit(1);
    }
-           listen(sockfd,5);
+         listen(sockfd,5);
          clilen = sizeof(cli_addr);
       
         
@@ -70,7 +70,7 @@ int main( int argc, char *argv[] ) {
             }
             
             printf("%s\n",buffer);
-            n = write(newsockfd,state,8);
+            n = write(newsockfd,buffer,8);
             
             if (n < 0) {
                perror("ERROR writing to socket");
